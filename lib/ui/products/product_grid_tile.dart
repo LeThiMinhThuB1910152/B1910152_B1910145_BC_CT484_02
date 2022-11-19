@@ -70,11 +70,11 @@ class ProductGirdTile extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: const Text(
-                  'Item added to cart',
+                  'Thêm vào giỏ hàng thành công',
                 ),
                 duration: const Duration(seconds: 2),
                 action: SnackBarAction(
-                  label: 'UNDO',
+                  label: 'BỎ',
                   onPressed: () {
                     cart.removeSingleItem(product.id!);
                   },

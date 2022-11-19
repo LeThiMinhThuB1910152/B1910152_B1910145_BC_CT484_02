@@ -4,14 +4,7 @@ import '../../models/cart_item.dart';
 import '../../models/product.dart';
 
 class CartManager with ChangeNotifier {
-  late Map<String, CartItem> _items = {
-    'p2': CartItem(
-      id: 'c2',
-      title: 'Red Shirt',
-      price: 29.29,
-      quantity: 2,
-    ),
-  };
+  late Map<String, CartItem> _items = {};
 
   int get productCount {
     return _items.length;

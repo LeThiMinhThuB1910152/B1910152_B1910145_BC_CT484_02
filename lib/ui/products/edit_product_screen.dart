@@ -97,7 +97,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Product'),
+        title: const Text('Cập nhật'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.save),
@@ -129,12 +129,12 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildTitleField() {
     return TextFormField(
       initialValue: _editedProduct.title,
-      decoration: const InputDecoration(labelText: 'Title'),
+      decoration: const InputDecoration(labelText: 'Tên sản phẩm'),
       textInputAction: TextInputAction.next,
       autofocus: true,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please provide a value.';
+          return 'Vui lòng cung cấp 1 giá trị';
         }
         return null;
       },
@@ -147,18 +147,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildPriceField() {
     return TextFormField(
       initialValue: _editedProduct.price.toString(),
-      decoration: const InputDecoration(labelText: 'Price'),
+      decoration: const InputDecoration(labelText: 'Giá'),
       textInputAction: TextInputAction.next,
       keyboardType: TextInputType.number,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please enter a price.';
+          return 'Vui lòng cung cấp giá.';
         }
         if (double.tryParse(value) == null) {
-          return 'Please enter a valid number.';
+          return 'Vui lòng thêm giá trị số.';
         }
         if (double.parse(value) <= 0) {
-          return 'Please enter a number greater than zero.';
+          return 'Vui lòng thêm số lớn hơn 0.';
         }
         return null;
       },
@@ -171,15 +171,15 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildDescriptionField() {
     return TextFormField(
       initialValue: _editedProduct.description,
-      decoration: const InputDecoration(labelText: 'Description'),
+      decoration: const InputDecoration(labelText: 'Mô tả'),
       maxLines: 3,
       keyboardType: TextInputType.multiline,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please enter a description.';
+          return 'Vui lòng nhập mô tả.';
         }
         if (value.length < 10) {
-          return 'Should be at least 10 characters long.';
+          return 'Nhập ít nhất 10 ký tự';
         }
         return null;
       },
@@ -207,7 +207,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
             ),
           ),
           child: _imageUrlController.text.isEmpty
-              ? const Text('Enter a URL')
+              ? const Text('Thêm 1 URL')
               : FittedBox(
                   child: Image.network(
                     _imageUrlController.text,
@@ -224,7 +224,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
 
   TextFormField buildImageURLField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: 'Image URL'),
+      decoration: const InputDecoration(labelText: 'URL ảnh'),
       keyboardType: TextInputType.url,
       textInputAction: TextInputAction.done,
       controller: _imageUrlController,
@@ -232,10 +232,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
       onFieldSubmitted: (value) => _saveForm(),
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Please enter an image URL.';
+          return 'Vui lòng thêm 1 URL.';
         }
         if (!_isValidImageUrl(value)) {
-          return 'Please enter a valid image URL.';
+          return 'Vui lòng thêm giá trị URL ảnh.';
         }
         return null;
       },
@@ -249,7 +249,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     return showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('An Error Occurred!'),
+        title: const Text('Đã xảy ra lỗi!'),
         content: Text(message),
         actions: <Widget>[
           TextButton(
